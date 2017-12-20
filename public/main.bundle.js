@@ -1082,7 +1082,7 @@ var AdminGuard = (function () {
         this.router = router;
     }
     AdminGuard.prototype.canActivate = function () {
-        console.log(this.authService.adminLoggedIn());
+        // console.log(this.authService.adminLoggedIn());
         if (this.authService.adminLoggedIn()) {
             return true;
         }
