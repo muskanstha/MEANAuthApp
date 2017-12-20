@@ -21,10 +21,6 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    access: [{
-        type: String,
-        required: false
-    }],
     public: {
         type: Boolean,
         required: true
@@ -45,7 +41,7 @@ module.exports.getPublicPosts = function (callback) {
 };
 
 module.exports.getPrivatePosts = function (user, callback) {
-    console.log(user);
+    // console.log(user);
     var query = Post.find({ author: user.username, public: false }, callback).select('title content author public -_id');
     // User.find({}, { password: 0 }, { phone: 0 }, callback);
 };

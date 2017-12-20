@@ -23,13 +23,11 @@ router.post('/register', (req, res, next) => {
                     res.json({ success: false, msg: 'Failed to register user' });
                 } else {
                     res.json({ success: true, msg: 'registered user' });
-
                 }
             });
         }
         else {
             res.json({ success: false, msg: 'user already exists' });
-
         }
     });
 
@@ -59,11 +57,12 @@ router.post('/authenticate', (req, res, next) => {
                         name: user.name,
                         username: user.username,
                         email: user.email,
-                        phone: user.phone
+                        phone: user.phone,
+                        permission: user.permission
                     }
                 });
             } else {
-                return res.json({ success: false, msg: 'Password mismatch' });
+                return res.json({ success: false, msg: 'Could not delete user' });
             }
         });
     });
@@ -76,6 +75,15 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 // Users
+// router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+//     User.getUsers((err, users) => {
+//         if (err) throw err;
+//         res.json({
+//             users: users
+//         });
+//     });
+// });
+
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     User.getUsers((err, users) => {
         if (err) throw err;
@@ -84,6 +92,63 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res, nex
         });
     });
 });
+
+// get users list will full details
+router.get('/manage', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    if (req.user.permission === 'user') {
+        return res.json({ success: false, msg: 'Access NOT authorized!!' });
+    }
+    else if (req.user.permission === 'admin') {
+        User.getUsersFull((err, users) => {
+            if (err) throw err;
+            res.json({
+                users: users
+            });
+        });
+    }
+    else {
+        return res.json({ success: false, msg: 'Access NOT authorized!!' });
+    }
+});
+
+// delete users
+router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    const id = req.params.id;
+    
+    if (req.user.permission === 'user') {
+        return res.json({ success: false, msg: 'Access NOT authorized!!' });
+    }
+    else if (req.user.permission === 'admin') {
+        // console.log(id);
+        // User.deleteUser(id,(err) => {
+        //     if (err) throw err;
+        // });
+        // res.json({ success: true, msg: 'User Successfully deleted!!' });
+
+        User.getUserById(id, (err, user) => {
+            if (err) throw err;
+            if (!user) {
+                return res.json({ success: false, msg: 'User not found' });
+            }
+            User.deleteUser(id,(err) => {
+                if (err) throw err;
+                res.json({ success: true, msg: 'User Successfully deleted!!' });
+            });
+        });
+
+        // User.getUserByUsername(username, (err, user) => {
+        //     if (err) throw err;
+        //     if (!user) {
+        //         return res.json({ success: false, msg: 'User not found' });
+        //     }
+            
+        // });
+    }
+    else {
+        return res.json({ success: false, msg: 'Access NOT authorized!!' });
+    }
+});
+
 
 // Validate
 // router.get('/validate', (req,res, next) => {

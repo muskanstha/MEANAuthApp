@@ -19,7 +19,7 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req, r
         access: req.body.access,
         public: req.body.public
     });
-    console.log(newPost);
+    // console.log(newPost);
     Post.addPost(newPost, (err, post) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to create post' });

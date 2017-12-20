@@ -23,6 +23,11 @@ const UserSchema = mongoose.Schema({
     phone: {
         type: Number,
         required: true
+    },
+    permission: {
+        type: String,
+        required: true,
+        default: 'user'
     }
 });
 
@@ -38,7 +43,7 @@ module.exports.getUserByUsername = function (username, callback) {
 }
 
 module.exports.addUser = function (newUser, callback) {
-    console.log(newUser);
+    // console.log(newUser);
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -56,6 +61,17 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
 }
 
 module.exports.getUsers = function (callback) {
-    var query =  User.find({},callback).select('name email username -_id');
+    var query = User.find({}, callback).select('name email username -_id');
     // User.find({}, { password: 0 }, { phone: 0 }, callback);
 };
+
+module.exports.getUsersFull = function (callback) {
+    var query = User.find({}, callback).select('name email username phone permission');
+
+    // var query =  User.find({},callback);
+    // User.find({}, { password: 0 }, { phone: 0 }, callback);
+};
+
+module.exports.deleteUser = function (id, callback) {
+    User.findByIdAndRemove(id, callback);
+}
