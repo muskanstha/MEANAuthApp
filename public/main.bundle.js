@@ -770,7 +770,7 @@ var PostComponent = (function () {
         var _this = this;
         this.authService.getPrivatePosts().subscribe(function (posts) {
             _this.posts = posts;
-            console.log(posts);
+            // console.log(posts);
         }, function (err) {
             console.log(err);
             return false;
