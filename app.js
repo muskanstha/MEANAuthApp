@@ -23,7 +23,7 @@ const app = express();
 const users = require('./routes/users');
 const posts = require('./routes/posts');
 
-// port no
+// port no:
 // const port = 3000;
 
 const port = process.env.PORT || 8080;
