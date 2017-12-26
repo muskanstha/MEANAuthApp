@@ -584,11 +584,11 @@ var ManageUsersComponent = (function () {
             this.authService.deleteUser(id).subscribe(function (data) {
                 if (data.success) {
                     _this.flashMessage.show('User successfully deleted', { cssClass: 'alert-success', timeout: 3000 });
-                    _this.router.navigate(['/users/manage']);
+                    _this.ngOnInit();
                 }
                 else {
                     _this.flashMessage.show('Could not delete user', { cssClass: 'alert-danger', timeout: 3000 });
-                    _this.router.navigate(['/users/manage']);
+                    _this.ngOnInit();
                 }
             });
         }
