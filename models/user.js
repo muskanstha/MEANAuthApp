@@ -6,7 +6,8 @@ const config = require('../config/database');
 
 const UserSchema = mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
         type: String,
@@ -61,7 +62,7 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
 }
 
 module.exports.getUsers = function (callback) {
-    var query = User.find({}, callback).select('name email username -_id');
+    var query = User.find({}, callback).select('name email username');
     // User.find({}, { password: 0 }, { phone: 0 }, callback);
 };
 

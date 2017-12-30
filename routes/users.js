@@ -86,6 +86,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 // });
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    // console.log(req);
     User.getUsers((err, users) => {
         if (err) throw err;
         res.json({

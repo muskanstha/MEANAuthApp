@@ -1002,7 +1002,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/users/users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"menu\">\r\n  <div class=\"user-group\">\r\n    <ul class=\"users\">\r\n        <!-- <div *ngIf=\"authService.adminLoggedIn()\">\r\n            <a class=\"btn btn-primary\" [routerLink]=\"['/users/manage']\">Manage Users</a>\r\n          </div> -->\r\n      <li *ngFor=\"let user of users\">\r\n        <h5>{{user.name}}</h5>\r\n        <p>- {{user.username}} - {{user.email}}</p>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</section>"
+module.exports = "<section class=\"menu\">\r\n  <div class=\"user-group\">\r\n    <ul class=\"users\">\r\n        <!-- <div *ngIf=\"authService.adminLoggedIn()\">\r\n            <a class=\"btn btn-primary\" [routerLink]=\"['/users/manage']\">Manage Users</a>\r\n          </div> -->\r\n      <li *ngFor=\"let user of users\">\r\n        <h5>{{user.name}}</h5>\r\n        <p>- {{user.username}} - {{user.email}}</p>\r\n        <button *ngIf=\"authService.adminLoggedIn()\" (click)=\"deleteUser(user._id, user.username)\">Delete User</button> \r\n        <br/>\r\n        <br/>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</section>"
 
 /***/ }),
 
@@ -1014,6 +1014,8 @@ module.exports = "<section class=\"menu\">\r\n  <div class=\"user-group\">\r\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages_module__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages_module__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1026,12 +1028,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UsersComponent = (function () {
-    function UsersComponent(authService, router) {
+    function UsersComponent(authService, router, flashMessage) {
         this.authService = authService;
         this.router = router;
+        this.flashMessage = flashMessage;
     }
     UsersComponent.prototype.ngOnInit = function () {
+        this.loadUsers();
+    };
+    UsersComponent.prototype.deleteUser = function (id, username) {
+        var _this = this;
+        if (confirm('Are you sure you want to delete user: ' + username)) {
+            // console.log('trying');
+            this.authService.deleteUser(id).subscribe(function (data) {
+                if (data.success) {
+                    _this.flashMessage.show('User successfully deleted', { cssClass: 'alert-success', timeout: 3000 });
+                    _this.loadUsers();
+                }
+                else {
+                    _this.flashMessage.show('Could not delete user', { cssClass: 'alert-danger', timeout: 3000 });
+                    _this.loadUsers();
+                }
+            });
+        }
+    };
+    UsersComponent.prototype.loadUsers = function () {
         var _this = this;
         this.authService.getOtherUsers().subscribe(function (users) {
             _this.users = users;
@@ -1047,7 +1070,8 @@ var UsersComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/users/users.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages_module__["FlashMessagesService"]])
     ], UsersComponent);
     return UsersComponent;
 }());
@@ -1222,8 +1246,8 @@ var AuthService = (function () {
     function AuthService(http, httpc) {
         this.http = http;
         this.httpc = httpc;
-        // this.localhost = 'http://localhost:8080/';
-        this.localhost = '';
+        this.localhost = 'http://localhost:8080/';
+        // this.localhost = '';
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
