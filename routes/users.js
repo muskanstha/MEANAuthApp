@@ -47,9 +47,18 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                const token = jwt.sign({ data: user }, config.secret, {
-                    expiresIn: 604800 // 1 week
-                });
+                const token = jwt.sign({
+                    data: user = {
+                        _id: user._id,
+                        name: user.name,
+                        username: user.username,
+                        email: user.email,
+                        phone: user.phone,
+                        permission: user.permission
+                    }
+                }, config.secret, {
+                        expiresIn: 604800 // 1 week
+                    });
                 res.json({
                     success: true,
                     token: 'JWT ' + token,
@@ -116,7 +125,7 @@ router.get('/manage', passport.authenticate('jwt', { session: false }), (req, re
 // delete users
 router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     const id = req.params.id;
-    
+
     if (req.user.permission === 'user') {
         return res.json({ success: false, msg: 'Access NOT authorized!!' });
     }
@@ -132,7 +141,7 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (
             if (!user) {
                 return res.json({ success: false, msg: 'User not found' });
             }
-            User.deleteUser(id,(err) => {
+            User.deleteUser(id, (err) => {
                 if (err) throw err;
                 res.json({ success: true, msg: 'User Successfully deleted!!' });
             });
@@ -143,7 +152,7 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (
         //     if (!user) {
         //         return res.json({ success: false, msg: 'User not found' });
         //     }
-            
+
         // });
     }
     else {
