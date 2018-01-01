@@ -63,7 +63,7 @@ router.post('/authenticate', (req, res, next) => {
                     }
                 });
             } else {
-                return res.json({ success: false, msg: 'Could not delete user' });
+                return res.json({ success: false, msg: 'Username or password is incorrect' });
             }
         });
     });

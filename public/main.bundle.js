@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div><app-navbar></app-navbar>\r\n  </div>\r\n<div class=\"container\">\r\n  <flash-messages></flash-messages>\r\n  <router-outlet></router-outlet>\r\n</div>"
+module.exports = "<div><app-navbar></app-navbar>\n  </div>\n<div class=\"container\">\n  <flash-messages></flash-messages>\n  <router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -213,7 +213,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/create-post/create-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\r\n<form (submit)=\"onCreateSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input type=\"text\" [(ngModel)]=\"title\" name=\"name\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Content</label>\r\n    <input type=\"text\" [(ngModel)]=\"content\" name=\"username\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <input type=\"radio\" name=\"food\" [(ngModel)]=\"public\" [value]=\"true\">\r\n    <label>Make Post Public</label>\r\n    <!-- <input type=\"checkbox\" [(ngModel)]=\"public\" name=\"username\" class=\"form-control\"> -->\r\n    <br/>\r\n\r\n    <input type=\"radio\" name=\"food\" [(ngModel)]=\"public\" [value]=\"false\">\r\n    <label>Make Post Private</label>\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Create\">\r\n</form>"
+module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onCreateSubmit()\">\n  <div class=\"form-group\">\n    <label>Title</label>\n    <input type=\"text\" [(ngModel)]=\"title\" name=\"name\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Content</label>\n    <input type=\"text\" [(ngModel)]=\"content\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <input type=\"radio\" name=\"food\" [(ngModel)]=\"public\" [value]=\"true\">\n    <label>Make Post Public</label>\n    <!-- <input type=\"checkbox\" [(ngModel)]=\"public\" name=\"username\" class=\"form-control\"> -->\n    <br/>\n\n    <input type=\"radio\" name=\"food\" [(ngModel)]=\"public\" [value]=\"false\">\n    <label>Make Post Private</label>\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Create\">\n</form>"
 
 /***/ }),
 
@@ -318,7 +318,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\r\n<p>Welcome to your Dashboard</p>"
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n<p>Welcome to your Dashboard</p>"
 
 /***/ }),
 
@@ -379,7 +379,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\r\n  <h1> MEAN Authentication APP</h1>\r\n  <p class=\"lead\">App built in MEAN</p>\r\n  <div *ngIf=\"!authService.loggedIn()\">\r\n    <a class=\"btn btn-primary\" [routerLink]=\"['/login']\">Login</a>\r\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"jumbotron text-center\">\n  <h1> MEAN Authentication APP</h1>\n  <p class=\"lead\">App built in MEAN</p>\n  <div *ngIf=\"!authService.loggedIn()\">\n    <a class=\"btn btn-primary\" [routerLink]=\"['/login']\">Login</a>\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -443,7 +443,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\r\n<form (submit)=\"onLoginSubmit()\">\r\n    <div class=\"form-group\">\r\n        <label>Username</label>\r\n        <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label>Password</label>\r\n        <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\r\n    </div>\r\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\r\n</form>"
+module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n    <div class=\"form-group\">\n        <label>Username</label>\n        <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n    </div>\n\n    <div class=\"form-group\">\n        <label>Password</label>\n        <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n    </div>\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>"
 
 /***/ }),
 
@@ -535,7 +535,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/manage-users/manage-users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"menu\">\r\n  <div class=\"user-group\">\r\n    <ul class=\"users\">\r\n      <li *ngFor=\"let user of users\">\r\n        <h5>{{user.name}} - {{user.permission}}</h5>\r\n        <p>- {{user.username}} - {{user.email}} - {{user.phone}}</p>\r\n        <button  (click)=\"deleteUser(user._id, user.username)\">Delete User</button>\r\n        <br/>\r\n        <br/>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</section>"
+module.exports = "<section class=\"menu\">\n  <div class=\"user-group\">\n    <ul class=\"users\">\n      <li *ngFor=\"let user of users\">\n        <h5>{{user.name}} - {{user.permission}}</h5>\n        <p>- {{user.username}} - {{user.email}} - {{user.phone}}</p>\n        <button  (click)=\"deleteUser(user._id, user.username)\">Delete User</button>\n        <br/>\n        <br/>\n      </li>\n    </ul>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -631,7 +631,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark default\">\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/']\">Home </a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav navbar-right\">\r\n      <li *ngIf=\"!authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/login']\">Login</a>\r\n      </li>\r\n      <li *ngIf=\"!authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n      </li>\r\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard</a>\r\n      </li>\r\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile</a>\r\n      </li>\r\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/posts/public']\">Posts</a>\r\n      </li>\r\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/users']\">Users</a>\r\n      </li>\r\n      <li *ngIf=\"authService.adminLoggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/users/manage']\">Manage Users</a>\r\n      </li>\r\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\r\n        <a class=\"nav-link\" (click)=\"onLogOutClick()\" href=\"#\">Logout</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>\r\n<br/>\r\n<br/>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark default\">\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/']\">Home </a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav navbar-right\">\n      <li *ngIf=\"!authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/login']\">Login</a>\n      </li>\n      <li *ngIf=\"!authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\n      </li>\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard</a>\n      </li>\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile</a>\n      </li>\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/posts/public']\">Posts</a>\n      </li>\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/users']\">Users</a>\n      </li>\n      <li *ngIf=\"authService.adminLoggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/users/manage']\">Manage Users</a>\n      </li>\n      <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"onLogOutClick()\" href=\"#\">Logout</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n<br/>\n<br/>"
 
 /***/ }),
 
@@ -713,7 +713,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"post-selector\">\r\n  <button class=\"button\" (click)=\"publicPosts()\">Public</button>\r\n  <button class=\"button\" (click)=\"privatePosts()\">Private</button>\r\n  <button class=\"button\" (click)=\"createPost()\">Create Post</button>\r\n  <br/>\r\n  <br/>\r\n</div>\r\n<section class=\"menu\">\r\n  <div class=\"post-group\">\r\n    <ul class=\"posts\">\r\n      <li *ngFor=\"let post of posts\">\r\n        <h4>{{post.title}}</h4>\r\n        <p>{{post.content}}</p>\r\n        <p>- {{post.author}}</p>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</section>\r\n"
+module.exports = "<div id=\"post-selector\">\n  <button class=\"button\" (click)=\"publicPosts()\">Public</button>\n  <button class=\"button\" (click)=\"privatePosts()\">Private</button>\n  <button class=\"button\" (click)=\"createPost()\">Create Post</button>\n  <br/>\n  <br/>\n</div>\n<section class=\"menu\">\n  <div class=\"post-group\">\n    <ul class=\"posts\">\n      <li *ngFor=\"let post of posts\">\n        <h4>{{post.title}}</h4>\n        <p>{{post.content}}</p>\n        <p>- {{post.author}}</p>\n      </li>\n    </ul>\n  </div>\n</section>\n"
 
 /***/ }),
 
@@ -770,7 +770,7 @@ var PostComponent = (function () {
         var _this = this;
         this.authService.getPrivatePosts().subscribe(function (posts) {
             _this.posts = posts;
-            console.log(posts);
+            // console.log(posts);
         }, function (err) {
             console.log(err);
             return false;
@@ -818,7 +818,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">{{user.name}}</h2>\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\r\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\r\n    <li class=\"list-group-item\">Phone: {{user.phone}}</li>\r\n    <li class=\"list-group-item\">Role: {{user.permission}}</li>\r\n  </ul>\r\n</div>"
+module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\n    <li class=\"list-group-item\">Phone: {{user.phone}}</li>\n    <li class=\"list-group-item\">Role: {{user.permission}}</li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -893,7 +893,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\r\n<form (submit)=\"onRegisterSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n      <label>Username</label>\r\n      <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label>Email</label>\r\n        <input type=\"text\"  [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label>Phone</label>\r\n        <input type=\"text\"  [(ngModel)]=\"phone\" name=\"phone\" class=\"form-control\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n          <label>Password</label>\r\n          <input type=\"password\"  [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\r\n        </div>\r\n        <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\r\n</form>"
+module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Name</label>\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n      <label>Username</label>\n      <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n        <label>Email</label>\n        <input type=\"text\"  [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n      </div>\n      <div class=\"form-group\">\n        <label>Phone</label>\n        <input type=\"text\"  [(ngModel)]=\"phone\" name=\"phone\" class=\"form-control\">\n      </div>\n      <div class=\"form-group\">\n          <label>Password</label>\n          <input type=\"password\"  [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n        </div>\n        <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>"
 
 /***/ }),
 
@@ -1106,7 +1106,7 @@ var AdminGuard = (function () {
         this.router = router;
     }
     AdminGuard.prototype.canActivate = function () {
-        console.log(this.authService.adminLoggedIn());
+        // console.log(this.authService.adminLoggedIn());
         if (this.authService.adminLoggedIn()) {
             return true;
         }
